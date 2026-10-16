@@ -5,10 +5,6 @@ if ( ! defined('ABSPATH') ) exit;
 add_filter('the_content', 'fehrestino_render_toc');
 add_shortcode('fehrestino', 'fehrestino_shortcode');
 
-/**
- * جلوگیری از رندر تکراری فهرست در یک درخواست (باگ: the_content ممکن است چند بار
- * روی یک پست فراخوانی شود - مثلاً در مطالب مرتبط، ابزارک‌ها یا قالب‌های خاص)
- */
 function fehrestino_already_rendered($post_id) {
     static $rendered = [];
     if ( in_array($post_id, $rendered, true) ) {
@@ -18,9 +14,6 @@ function fehrestino_already_rendered($post_id) {
     return false;
 }
 
-/**
- * جایگزینی فقط اولین رخداد یک رشته (برای جلوگیری از مشکلات preg_replace با کاراکترهای خاص)
- */
 function fehrestino_str_replace_once($search, $replace, $subject) {
     $pos = strpos($subject, $search);
     if ($pos === false) {
@@ -29,10 +22,6 @@ function fehrestino_str_replace_once($search, $replace, $subject) {
     return substr_replace($subject, $replace, $pos, strlen($search));
 }
 
-/**
- * استخراج هدینگ‌های مجاز از محتوا و ساخت آرایه‌ای از تطبیق‌ها به ترتیب ظاهر شدن در متن
- * رجکس بهبودیافته نسبت به نسخه قبلی: مقادیر داخل اتریبیوت‌ها (مثل alt=">") دیگر باعث شکست نمی‌شود
- */
 function fehrestino_extract_headings($content, $selected_hs) {
     $pattern = '/<h([2-6])((?:[^>"\']|"[^"]*"|\'[^\']*\')*)>(.*?)<\/h\1\s*>/is';
 
@@ -52,11 +41,8 @@ function fehrestino_extract_headings($content, $selected_hs) {
     return $filtered;
 }
 
-/**
- * شماره‌گذاری سلسله‌مراتبی (1, 1.1, 1.1.1 ...) بر اساس سطوح انتخاب‌شده
- */
 function fehrestino_build_numbering(&$counters, $level_index) {
-    // صفر کردن شمارنده‌های سطوح عمیق‌تر
+
     foreach ($counters as $depth => $val) {
         if ($depth > $level_index) {
             $counters[$depth] = 0;
@@ -71,9 +57,6 @@ function fehrestino_build_numbering(&$counters, $level_index) {
     return implode('.', $parts);
 }
 
-/**
- * ساخت HTML نهایی فهرست + جایگذاری id روی هدینگ‌های اصلی محتوا
- */
 function fehrestino_build_toc($content, $data) {
     $selected_hs = ! empty($data['headings']) ? $data['headings'] : ['2', '3'];
     $min_headings = max(1, intval($data['min_headings'] ?? 2));
@@ -85,7 +68,7 @@ function fehrestino_build_toc($content, $data) {
     }
 
     sort($selected_hs);
-    $level_map = array_flip($selected_hs); // سطح => عمق (برای شماره‌گذاری تو در تو)
+    $level_map = array_flip($selected_hs);
 
     $theme        = sanitize_html_class($data['theme'] ?? 'neo');
     $accent       = preg_match('/^#[a-fA-F0-9]{6}$/', $data['accent_color'] ?? '') ? $data['accent_color'] : '#1a1a1b';
@@ -138,9 +121,6 @@ function fehrestino_build_toc($content, $data) {
     return ['content' => $content, 'toc' => $toc_html];
 }
 
-/**
- * نگهداری موقت HTML فهرست برای هماهنگی بین درج خودکار و شورت‌کد دستی در یک درخواست
- */
 function fehrestino_toc_cache($post_id, $value = null) {
     static $cache = [];
     if ($value !== null) {
@@ -150,9 +130,6 @@ function fehrestino_toc_cache($post_id, $value = null) {
     return $cache[$post_id] ?? '';
 }
 
-/**
- * درج خودکار در the_content
- */
 function fehrestino_render_toc($content) {
 
     if ( ! fehrestino_should_run() ) {
@@ -171,7 +148,6 @@ function fehrestino_render_toc($content) {
     $data = wp_parse_args(get_option('ctoc_data', []), fehrestino_default_options());
     $has_shortcode = has_shortcode($content, 'fehrestino');
 
-    // اگر نه درج خودکار فعال است و نه شورت‌کد در متن استفاده شده، کاری لازم نیست
     if ( empty($data['auto_insert']) && ! $has_shortcode ) {
         return $content;
     }
@@ -185,8 +161,6 @@ function fehrestino_render_toc($content) {
     $content  = $result['content'];
     $toc_html = $result['toc'];
 
-    // اگر شورت‌کد دستی در متن وجود دارد، فهرست را برای استفاده بعدی توسط do_shortcode ذخیره می‌کنیم
-    // و آن را به‌صورت خودکار بالای محتوا تکرار نمی‌کنیم
     if ( $has_shortcode ) {
         fehrestino_toc_cache($post_id, $toc_html);
         return $content;
@@ -208,10 +182,6 @@ function fehrestino_render_toc($content) {
     return $toc_html . $content;
 }
 
-/**
- * شورت‌کد [fehrestino] برای جایگذاری دستی فهرست در هر نقطه از محتوا
- * فهرست از کش مشترک خوانده می‌شود تا با id هدینگ‌های واقعاً درج‌شده در محتوا هماهنگ باشد
- */
 function fehrestino_shortcode($atts, $content_param = null, $tag = '') {
     global $post;
 
@@ -225,7 +195,6 @@ function fehrestino_shortcode($atts, $content_param = null, $tag = '') {
         return $cached;
     }
 
-    // پشتیبان: اگر کش خالی بود (مثلاً شورت‌کد خارج از حلقه اصلی استفاده شده)، مستقیم می‌سازیم
     $data = wp_parse_args(get_option('ctoc_data', []), fehrestino_default_options());
     $result = fehrestino_build_toc($post->post_content, $data);
 
