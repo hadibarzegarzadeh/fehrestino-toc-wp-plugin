@@ -1,0 +1,197 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Fehrestino 2.2\n"
+"Report-Msgid-Bugs-To: https://tarnoma.ir\n"
+"POT-Creation-Date: 2026-10-12 00:00+0000\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: fehrestino\n"
+
+msgid "فهرستینو"
+msgstr ""
+
+msgid "پنل مدیریت فهرست مطالب هوشمند"
+msgstr ""
+
+msgid "نسخه %s"
+msgstr ""
+
+msgid "تنظیمات عمومی"
+msgstr ""
+
+msgid "ظاهر و قالب"
+msgstr ""
+
+msgid "پیشرفته"
+msgstr ""
+
+msgid "متن عنوان فهرست"
+msgstr ""
+
+msgid "این متن بالای جعبه‌ی فهرست مطالب نمایش داده می‌شود."
+msgstr ""
+
+msgid "هدینگ‌های نمایش داده‌شده"
+msgstr ""
+
+msgid "حداقل یک سطح باید فعال بماند؛ سلسله‌مراتب به‌صورت خودکار رعایت می‌شود."
+msgstr ""
+
+msgid "محل نمایش"
+msgstr ""
+
+msgid "درج خودکار در محتوا"
+msgstr ""
+
+msgid "فهرست به‌طور خودکار بالای مطلب درج می‌شود."
+msgstr ""
+
+msgid "فعال‌سازی روی برگه‌ها (Pages)"
+msgstr ""
+
+msgid "به‌طور پیش‌فرض فقط روی نوشته‌ها (Posts) فعال است."
+msgstr ""
+
+msgid "حداقل تعداد هدینگ برای نمایش فهرست"
+msgstr ""
+
+msgid ""
+"اگر تعداد هدینگ‌های مطلب کمتر از این عدد باشد، فهرست نمایش داده نمی‌شود."
+msgstr ""
+
+msgid "درج دستی با شورت‌کد"
+msgstr ""
+
+msgid ""
+"برای جایگذاری فهرست در نقطه‌ی دلخواهی از متن (به‌جای درج خودکار)، این "
+"شورت‌کد را در ویرایشگر وارد کنید:"
+msgstr ""
+
+msgid "H2 — عنوان اصلی"
+msgstr ""
+
+msgid "H3 — زیرعنوان"
+msgstr ""
+
+msgid "H4 — زیرعنوان جزئی‌تر"
+msgstr ""
+
+msgid "نئو (پیش‌فرض)"
+msgstr ""
+
+msgid "طراحی برجسته و پررنگ با حاشیه ضخیم"
+msgstr ""
+
+msgid "مینیمال"
+msgstr ""
+
+msgid "ساده، تمیز و سبک با خط رنگی کنار"
+msgstr ""
+
+msgid "گرادیانت"
+msgstr ""
+
+msgid "هدر رنگی مدرن با گرادیان جذاب"
+msgstr ""
+
+msgid "کارتی"
+msgstr ""
+
+msgid "سایه نرم به سبک کارت‌های مدرن"
+msgstr ""
+
+msgid "انتخاب قالب فهرست"
+msgstr ""
+
+msgid ""
+"یکی از قالب‌های آماده را انتخاب کنید — پیش‌نمایش به‌صورت زنده در سمت راست "
+"به‌روزرسانی می‌شود."
+msgstr ""
+
+msgid "رنگ اصلی (Accent)"
+msgstr ""
+
+msgid "این رنگ در حاشیه‌ها، آیکون‌ها و عناصر برجسته‌ی فهرست استفاده می‌شود."
+msgstr ""
+
+msgid "شماره‌گذاری خودکار"
+msgstr ""
+
+msgid "نمایش شماره کنار هر آیتم فهرست (مثل ۱، ۱.۱)"
+msgstr ""
+
+msgid "وضعیت پیش‌فرض جعبه"
+msgstr ""
+
+msgid "فهرست هنگام بارگذاری صفحه باز یا بسته باشد."
+msgstr ""
+
+msgid "باز"
+msgstr ""
+
+msgid "بسته"
+msgstr ""
+
+msgid "اسکرول نرم"
+msgstr ""
+
+msgid "با کلیک روی لینک‌ها، صفحه به‌جای پرش ناگهانی، به‌نرمی اسکرول می‌شود."
+msgstr ""
+
+msgid "هایلایت لینک فعال (Scrollspy)"
+msgstr ""
+
+msgid "هنگام اسکرول کاربر در مطلب، لینک بخش مربوطه در فهرست برجسته می‌شود."
+msgstr ""
+
+msgid "درباره عملکرد"
+msgstr ""
+
+msgid ""
+"✅ فهرست فقط در نوشته‌ها (و در صورت فعال‌سازی، برگه‌ها) بارگذاری می‌شود."
+msgstr ""
+
+msgid "✅ از رندر تکراری فهرست در یک صفحه جلوگیری شده است."
+msgstr ""
+
+msgid "✅ استخراج هدینگ‌ها در برابر اتریبیوت‌های پیچیده مقاوم شده است."
+msgstr ""
+
+msgid "ذخیره تنظیمات"
+msgstr ""
+
+msgid "پیش‌نمایش زنده"
+msgstr ""
+
+msgid "زبان پنل و فهرست"
+msgstr ""
+
+msgid "حداقل یک سطح هدینگ باید فعال باشد."
+msgstr ""
+
+msgid "کپی شد ✓"
+msgstr ""
+
+msgid "در این مقاله می‌خوانید:"
+msgstr ""
+
+msgid "مقدمه و آشنایی با موضوع"
+msgstr ""
+
+msgid "چرا این موضوع اهمیت دارد؟"
+msgstr ""
+
+msgid "پیش‌نیازهای لازم"
+msgstr ""
+
+msgid "بخش اصلی آموزش"
+msgstr ""
+
+msgid "گام اول"
+msgstr ""
+
+msgid "جمع‌بندی و نتیجه‌گیری"
+msgstr ""
