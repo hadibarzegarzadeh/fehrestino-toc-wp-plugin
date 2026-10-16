@@ -30,15 +30,15 @@ class Fehrestino_Public {
         }
 
         $auto_insert = isset($this->options['auto_insert']) ? $this->options['auto_insert'] : 1;
-        
+
         if ($auto_insert) {
             $toc = $this->create_toc($content);
             if ($toc) {
-                // Insert after the first paragraph or at the beginning
+
                 $content = $toc . $content;
             }
         }
-        
+
         return $this->add_ids_to_headings($content);
     }
 
@@ -54,21 +54,21 @@ class Fehrestino_Public {
             $attrs = $matches[2];
             $text = strip_tags($matches[3]);
             $id = sanitize_title($text);
-            
+
             if (strpos($attrs, 'id=') === false) {
                 $attrs .= ' id="' . $id . '"';
             }
-            
+
             return "<h{$level}{$attrs}>{$matches[3]}</h{$level}>";
         }, $content);
-        
+
         return $content;
     }
 
     private function create_toc($content) {
         $pattern = '/<h([2-6])([^>]*)>(.*?)<\/h\1>/i';
         preg_match_all($pattern, $content, $matches, PREG_SET_ORDER);
-        
+
         if (empty($matches) || count($matches) < 2) {
             return '';
         }
@@ -83,16 +83,16 @@ class Fehrestino_Public {
 
         $template = isset($this->options['template']) ? $this->options['template'] : 'minimal';
         $heading_text = isset($this->options['heading_text']) ? $this->options['heading_text'] : 'فهرست مطالب';
-        
+
         ob_start();
         $template_file = plugin_dir_path(__FILE__) . "partials/templates/template-{$template}.php";
-        
+
         if (file_exists($template_file)) {
             include $template_file;
         } else {
             include plugin_dir_path(__FILE__) . "partials/templates/template-minimal.php";
         }
-        
+
         return ob_get_clean();
     }
 }
