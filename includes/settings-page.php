@@ -44,7 +44,6 @@ function fehrestino_admin_assets($hook) {
         FEHRESTINO_VERSION
     );
 
-    // برای نمایش پیش‌نمایش زنده در پنل از همان استایل فرانت‌اند استفاده می‌کنیم
     wp_enqueue_style(
         'fehrestino-style',
         FEHRESTINO_URL . 'assets/css/toc-style.css',
@@ -78,15 +77,10 @@ function fehrestino_admin_assets($hook) {
     ]);
 }
 
-/**
- * پاکسازی و اعتبارسنجی کامل تنظیمات قبل از ذخیره
- */
 function fehrestino_sanitize($input) {
     $defaults = fehrestino_default_options();
     $output   = [];
 
-    // اگر کاربر عنوان پیش‌فرض را (به هر یک از دو زبان) دست‌نخورده نگه داشته، مقدار اصلی فارسی ذخیره می‌شود
-    // تا با تغییر زبان، عنوان پیش‌فرض هم هم‌زبان با پنل بماند.
     $title_in = isset($input['title']) ? trim($input['title']) : '';
     $output['title'] = ( $title_in !== '' && ! in_array($title_in, fehrestino_default_title_variants(), true) )
         ? sanitize_text_field($title_in)
@@ -147,7 +141,7 @@ function fehrestino_options_page() {
     $min_headings  = $data['min_headings'];
     $lang          = fehrestino_get_language();
     $is_rtl        = fehrestino_is_rtl();
-    // عنوان پیش‌فرض در زبان انتخاب‌شده نمایش داده می‌شود
+
     $title         = fehrestino_display_title($title);
 
     $heading_labels = [
@@ -219,7 +213,6 @@ function fehrestino_options_page() {
 
                     <div class="fehrestino-panels">
 
-                    <!-- تب تنظیمات عمومی -->
                     <section class="fehrestino-panel" data-panel="general">
 
                         <div class="fehrestino-card">
@@ -284,7 +277,6 @@ function fehrestino_options_page() {
 
                     </section>
 
-                    <!-- تب ظاهر و قالب -->
                     <section class="fehrestino-panel" data-panel="appearance" style="display:none;">
 
                         <div class="fehrestino-card">
@@ -341,7 +333,6 @@ function fehrestino_options_page() {
 
                     </section>
 
-                    <!-- تب پیشرفته -->
                     <section class="fehrestino-panel" data-panel="advanced" style="display:none;">
                         <div class="fehrestino-card">
                             <div class="fehrestino-toggle-row">
@@ -379,19 +370,18 @@ function fehrestino_options_page() {
                         </div>
                     </section>
 
-                    </div><!-- /.fehrestino-panels -->
-                    </div><!-- /.fehrestino-body -->
+                    </div>
+                    </div>
 
                     <?php submit_button(__('ذخیره تنظیمات', 'fehrestino'), 'primary', 'submit', false, ['class' => 'button button-primary fehrestino-save-btn']); ?>
 
                 </div>
 
-                <!-- پیش‌نمایش زنده -->
                 <aside class="fehrestino-preview-col">
                     <div class="fehrestino-preview-sticky">
                         <h3><?php esc_html_e('پیش‌نمایش زنده', 'fehrestino'); ?></h3>
                         <div class="fehrestino-preview-frame" id="fehrestino-live-preview">
-                            <!-- با جاوااسکریپت ساخته می‌شود -->
+
                         </div>
                     </div>
                 </aside>
