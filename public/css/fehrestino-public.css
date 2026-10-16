@@ -1,4 +1,3 @@
-/* Base Styles */
 .fehrestino-toc {
     direction: rtl;
     margin: 30px 0;
@@ -58,7 +57,6 @@
 .fehrestino-level-5 { margin-right: 60px; }
 .fehrestino-level-6 { margin-right: 80px; }
 
-/* Template 1: Minimal */
 .fehrestino-minimal {
     border-right: 4px solid #4a00e0;
     padding: 15px 20px;
@@ -75,7 +73,6 @@
     color: #4a00e0;
 }
 
-/* Template 2: Glassmorphism */
 .fehrestino-glass {
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(10px);
@@ -96,7 +93,6 @@
     padding-right: 5px;
 }
 
-/* Template 3: Modern Material */
 .fehrestino-modern {
     background: #fff;
     border-radius: 12px;
