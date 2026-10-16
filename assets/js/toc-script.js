@@ -1,6 +1,3 @@
-/**
- * فهرستینو - اسکریپت فرانت‌اند
- */
 function fehrestinoToggle(el) {
     var wrapper = el.closest('.custom-toc-wrapper');
     if (!wrapper) return;
@@ -14,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var wrapper = document.getElementById('customToc');
     if (!wrapper) return;
 
-    // باز/بسته شدن با کیبورد (دسترس‌پذیری)
     var header = wrapper.querySelector('.custom-toc-header');
     if (header) {
         header.addEventListener('keydown', function (e) {
@@ -27,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var links = wrapper.querySelectorAll('.custom-toc-links a');
 
-    // اسکرول نرم به‌جای پرش ناگهانی
     if (settings.smoothScroll) {
         links.forEach(function (link) {
             link.addEventListener('click', function (e) {
@@ -36,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var target = document.querySelector(targetId);
                 if (!target) return;
                 e.preventDefault();
-                var offset = 90; // فاصله از بالای صفحه برای هدرهای ثابت
+                var offset = 90;
                 var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
                 window.scrollTo({ top: top, behavior: 'smooth' });
                 history.pushState(null, '', targetId);
@@ -44,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // هایلایت لینک فعال هنگام اسکرول
     if (settings.scrollspy && 'IntersectionObserver' in window) {
         var headingIds = [];
         links.forEach(function (link) {
