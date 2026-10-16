@@ -48,7 +48,6 @@
     margin-top: 5px;
 }
 
-/* Tabs */
 .fehrestino-tab-links {
     display: flex;
     margin: 0 0 20px 0;
@@ -91,7 +90,6 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Switch Toggle */
 .fehrestino-switch {
     position: relative;
     display: inline-block;
@@ -99,7 +97,7 @@
     height: 24px;
 }
 
-.fehrestino-switch input { 
+.fehrestino-switch input {
     opacity: 0;
     width: 0;
     height: 0;
@@ -143,7 +141,6 @@ input:checked + .fehrestino-slider:before {
     border-radius: 50%;
 }
 
-/* Templates Selection */
 .fehrestino-template-selector {
     display: flex;
     gap: 15px;
