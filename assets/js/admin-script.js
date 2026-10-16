@@ -4,7 +4,6 @@ jQuery(function ($) {
     var t = cfg.i18n || {};
     var DEFAULT_TITLE = t.defaultTitle || 'در این مقاله می‌خوانید:';
 
-    /* ---------- تب‌ها ---------- */
     $('.fehrestino-tab').on('click', function () {
         var tab = $(this).data('tab');
         $('.fehrestino-tab').removeClass('active');
@@ -13,7 +12,6 @@ jQuery(function ($) {
         $('.fehrestino-panel[data-panel="' + tab + '"]').show();
     });
 
-    /* ---------- کارت‌های قالب ---------- */
     $('.fehrestino-theme-card').on('click', function () {
         $('.fehrestino-theme-card').removeClass('is-selected');
         $(this).addClass('is-selected');
@@ -21,7 +19,6 @@ jQuery(function ($) {
         updatePreview();
     });
 
-    /* ---------- پیل‌های هدینگ: حداقل یک انتخاب الزامی ---------- */
     function syncPillState() {
         $('.fehrestino-pill').each(function () {
             var checked = $(this).find('input').is(':checked');
@@ -39,10 +36,8 @@ jQuery(function ($) {
     });
     syncPillState();
 
-    /* ---------- سایر فیلدهایی که روی پیش‌نمایش اثر دارند ---------- */
     $('input[name="ctoc_data[title]"], input[name="ctoc_data[numbering]"], input[name="ctoc_data[default_state]"]').on('input change', updatePreview);
 
-    /* ---------- کپی شورت‌کد ---------- */
     $('#fehrestino-shortcode-copy').on('click', function () {
         var text = $(this).text();
         var $el = $(this);
@@ -56,7 +51,6 @@ jQuery(function ($) {
         }
     });
 
-    /* ---------- پیش‌نمایش زنده ---------- */
     function getThemeKey() {
         return $('input[name="ctoc_data[theme]"]:checked').val() || 'neo';
     }
@@ -119,16 +113,13 @@ jQuery(function ($) {
         return $('<div>').text(str).html();
     }
 
-    /* همه‌ی بخش‌های حیاتی (تب‌ها، کارت‌ها، پیش‌نمایش) بالا و مستقل از رنگ‌چوب فعال شدند
-       تا در صورت بروز هر خطایی در رنگ‌چوب، بقیه‌ی پنل همچنان کار کند. */
     updatePreview();
 
-    /* ---------- انتخاب‌گر رنگ (جدا و ایمن، تا خطای احتمالی در آن باقی پنل را غیرفعال نکند) ---------- */
     try {
         if ($.fn.wpColorPicker) {
             $('.fehrestino-color-picker').wpColorPicker({
                 change: function (event, ui) {
-                    // wpColorPicker مقدار را با تاخیر در input ست می‌کند، برای پیش‌نمایش فوری مقدار را مستقیم می‌خوانیم
+
                     setTimeout(updatePreview, 10);
                 },
                 clear: function () {
@@ -136,7 +127,7 @@ jQuery(function ($) {
                 }
             });
         } else {
-            // اگر رنگ‌چوب وردپرس در دسترس نبود، حداقل تغییر متنی روی فیلد رنگ پیش‌نمایش را به‌روز کند
+
             $('.fehrestino-color-picker').on('input change', updatePreview);
         }
     } catch (e) {
