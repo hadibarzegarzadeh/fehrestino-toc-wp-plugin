@@ -18,9 +18,6 @@ require_once FEHRESTINO_PATH . 'includes/language.php';
 require_once FEHRESTINO_PATH . 'includes/settings-page.php';
 require_once FEHRESTINO_PATH . 'includes/toc-generator.php';
 
-/**
- * مقادیر پیش‌فرض تنظیمات افزونه
- */
 function fehrestino_default_options() {
     return [
         'title'          => 'در این مقاله می‌خوانید:',
@@ -38,18 +35,12 @@ function fehrestino_default_options() {
     ];
 }
 
-/**
- * هنگام فعال‌سازی، تنظیمات پیش‌فرض ذخیره شود تا کاربر با مقادیر خالی روبرو نشود
- */
 register_activation_hook(__FILE__, function () {
     if ( ! get_option('ctoc_data') ) {
         add_option('ctoc_data', fehrestino_default_options());
     }
 });
 
-/**
- * بارگذاری استایل و اسکریپت در فرانت‌اند - فقط زمانی که واقعاً لازم است
- */
 add_action('wp_enqueue_scripts', function () {
 
     if ( ! fehrestino_should_run() ) {
@@ -79,9 +70,6 @@ add_action('wp_enqueue_scripts', function () {
     ]);
 });
 
-/**
- * آیا افزونه باید روی این صفحه فعال شود؟ (مرکزی برای جلوگیری از بارگذاری بی‌مورد)
- */
 function fehrestino_should_run() {
     $data = wp_parse_args(get_option('ctoc_data', []), fehrestino_default_options());
 
